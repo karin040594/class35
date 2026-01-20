@@ -4,6 +4,8 @@ const API_KEY = '53a2c26da0867ca4805e767d824c0f0777dd8ce16d061da381119f2377374f8
 // For this demo, we will try direct calls. If CORS fails, we advise the user to disable CORS or use a proxy.
 const BASE_URL = 'http://openapi.q-net.or.kr/api/service/rest/InquiryListNationalQualifcationSVC/getList';
 const DETAIL_URL = 'http://openapi.q-net.or.kr/api/service/rest/InquiryInformationTradeNTQSVC/getList';
+// CORS Proxy to bypass browser restrictions
+const PROXY_URL = 'https://api.allorigins.win/raw?url=';
 
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
@@ -43,11 +45,10 @@ async function fetchQualifications() {
     showState('loading');
 
     try {
-        // Since we are running client-side, we construct the URL
-        // ServiceKey usually needs specific encoding or no encoding depending on how it was issued.
-        // Public Data Portal keys are notoriously finicky with encoding. 
-        // We will try using it exactly as provided first.
-        const url = `${BASE_URL}?serviceKey=${API_KEY}&numOfRows=1000&pageNo=1`; // Adjust rows as needed
+        // Construct the text URL first
+        const targetUrl = `${BASE_URL}?serviceKey=${API_KEY}&numOfRows=1000&pageNo=1`;
+        // Wrap with proxy
+        const url = `${PROXY_URL}${encodeURIComponent(targetUrl)}`;
 
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
@@ -81,7 +82,15 @@ async function fetchQualifications() {
 
     } catch (error) {
         console.error('Fetch Error:', error);
-        errorMessage.textContent = `데이터를 불러올 수 없습니다: ${error.message} (CORS 문제일 수 있습니다.)`;
+        errorMessage.innerHTML = `
+            데이터를 불러올 수 없습니다.<br>
+            <span style="font-size:0.9rem; color:#faa">${error.message}</span>
+            <br><br>
+            <span style="font-size:0.8rem; color:#ccc">
+            * 공공데이터포털 API 서버 상태에 따라 응답이 지연되거나 실패할 수 있습니다.<br>
+            * 잠시 후 다시 시도해 주세요.
+            </span>
+        `;
         showState('error');
     }
 }
@@ -164,7 +173,8 @@ async function openDetail(item) {
     try {
         // Fetch details
         // Note: The second API provided (InquiryInformationTradeNTQSVC) might need jmCd
-        const url = `${DETAIL_URL}?serviceKey=${API_KEY}&jmCd=${item.jmCd}`;
+        const targetUrl = `${DETAIL_URL}?serviceKey=${API_KEY}&jmCd=${item.jmCd}`;
+        const url = `${PROXY_URL}${encodeURIComponent(targetUrl)}`;
 
         const response = await fetch(url);
         const textData = await response.text();
