@@ -1,97 +1,236 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Technical Qualification Info | 국가기술자격 정보</title>
-    <meta name="description" content="한국산업인력공단 국가기술자격 종목 정보를 쉽고 빠르게 검색하세요.">
-    
+    <title>은희 & 정익의 두바이 쿠키 만들기</title>
+    <meta name="description" content="달콤하고 쫀득한 두바이 쿠키(피스타치오 카다이프 쿠키)를 은희와 정익의 레시피로 만들어보세요.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Pretendard:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="background-glob"></div>
-    <div class="background-glob glob-2"></div>
 
-    <header class="app-header">
+    <!-- JSON-LD for Recipe SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "은희 & 정익의 두바이 쫀득 쿠키",
+      "author": {
+        "@type": "Person",
+        "name": "은희 & 정익"
+      },
+      "description": "피스타치오 크림과 카다이프면이 들어간 겉바속촉 두바이 스타일 쿠키",
+      "prepTime": "PT40M",
+      "cookTime": "PT15M",
+      "totalTime": "PT55M",
+      "recipeYield": "8 cookies",
+      "recipeCategory": "Dessert",
+      "recipeCuisine": "Dubai",
+      "image": "dubai_cookie_hero.png"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="site-header">
         <div class="container">
-            <div class="logo">
-                <i class="fa-solid fa-certificate"></i>
-                <span>Quali<span class="highlight">Find</span></span>
-            </div>
-            <nav>
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-            </nav>
+            <h1 class="logo">은희 <span class="heart">♥</span> 정익의<br><span class="highlight">두바이 쿠키</span> 만들기</h1>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="hero-title">당신의 <span class="gradient-text">미래</span>를 위한<br>최고의 자격증을 찾아보세요.</h1>
-                <p class="hero-subtitle">한국산업인력공단에서 제공하는 모든 국가기술자격 정보를 한눈에 확인하세요.</p>
-                
-                <div class="search-container">
-                    <div class="search-bar">
-                        <i class="fa-solid fa-search search-icon"></i>
-                        <input type="text" id="searchInput" placeholder="자격증 명칭을 입력하세요 (예: 정보처리...)" autocomplete="off">
-                        <button id="searchBtn" class="search-button">검색</button>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-image-container">
+                <!-- Placeholder Image from Unsplash -->
+                <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    alt="두바이 쫀득 쿠키" class="hero-img">
+                <div class="hero-overlay">
+                    <div class="badge">
+                        <i class="fa-solid fa-star"></i> BEST RECIPE
+                    </div>
+                </div>
+            </div>
+            <div class="container hero-content">
+                <h2>집에서 만나는 <br><span class="text-accent">달콤한 기적</span></h2>
+                <p>겉은 바삭, 속은 꾸덕한 피스타치오 크림이 가득.<br>
+                    정익과 은희가 전하는 특별한 홈베이킹 레시피를 만나보세요.</p>
+
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>55분</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                        <span>8개 분량</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>난이도: 보통</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="results-section">
-            <div class="container">
-                <div id="loadingState" class="state-view hidden">
-                    <div class="loader"></div>
-                    <p>데이터를 불러오는 중입니다...</p>
+        <!-- Video Section -->
+        <section class="video-section container">
+            <div class="section-title">
+                <h3>Recipe Video</h3>
+                <p>영상으로 더 쉽게 따라하세요!</p>
+            </div>
+            <div class="video-wrapper">
+                <!-- Video Placeholder -->
+                <div class="video-placeholder">
+                    <div class="play-button">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <p>쿠키 만드는 영상 보러가기</p>
                 </div>
-                <div id="errorState" class="state-view hidden">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <p id="errorMessage">오류가 발생했습니다.</p>
-                </div>
-                <div id="emptyState" class="state-view hidden">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p>검색 결과가 없습니다.</p>
+                <!-- <video controls poster="poster_image.jpg">
+                    <source src="cookie_recipe.mp4" type="video/mp4">
+                    브라우저가 비디오 태그를 지원하지 않습니다.
+                </video> -->
+            </div>
+        </section>
+
+        <!-- Ingredients -->
+        <section class="ingredients container">
+            <div class="paper-bg">
+                <div class="section-title">
+                    <h3>Ingredients</h3>
+                    <p>준비물 체크리스트</p>
                 </div>
 
-                <div id="resultsGrid" class="cards-grid">
-                    <!-- Cards will be injected here via JS -->
+                <div class="ingredients-grid">
+                    <div class="ing-column">
+                        <h4>🍪 쿠키 반죽</h4>
+                        <ul class="checklist">
+                            <li><label><input type="checkbox"> <span>버터 200g (실온)</span></label></li>
+                            <li><label><input type="checkbox"> <span>흑설탕 150g</span></label></li>
+                            <li><label><input type="checkbox"> <span>백설탕 100g</span></label></li>
+                            <li><label><input type="checkbox"> <span>계란 2개</span></label></li>
+                            <li><label><input type="checkbox"> <span>박력분 300g</span></label></li>
+                            <li><label><input type="checkbox"> <span>베이킹소다 1작은술</span></label></li>
+                            <li><label><input type="checkbox"> <span>소금 1/2작은술</span></label></li>
+                            <li><label><input type="checkbox"> <span>바닐라 익스트랙 1작은술</span></label></li>
+                        </ul>
+                    </div>
+                    <div class="ing-column">
+                        <h4>🥜 필링 (속재료)</h4>
+                        <ul class="checklist">
+                            <li><label><input type="checkbox"> <span>피스타치오 크림 150g</span></label></li>
+                            <li><label><input type="checkbox"> <span>타히니(참깨소스) 50g</span></label></li>
+                            <li><label><input type="checkbox"> <span>꿀 2큰술</span></label></li>
+                            <li><label><input type="checkbox"> <span>다진 피스타치오 50g</span></label></li>
+                            <li><label><input type="checkbox"> <span>카다이프면 (선택)</span></label></li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="steps container">
+            <div class="section-title">
+                <h3>Instructions</h3>
+                <p>차근차근 따라해보세요</p>
+            </div>
+
+            <div class="step-card reveal-on-scroll">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                    <h4>반죽의 기초, 크림화</h4>
+                    <p>
+                        실온 상태의 말랑한 버터에 흑설탕과 백설탕을 넣고 휘핑기로 충분히 섞어주세요.
+                        설탕이 서걱거리는 소리가 잦아들고, 색이 밝은 크림색이 될 때까지 휘핑하는 것이 포인트입니다!
+                    </p>
+                    <div class="step-tip">
+                        <i class="fa-solid fa-lightbulb"></i> 팁: 버터가 너무 차가우면 전자레인지에 10초만 돌려주세요.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card reveal-on-scroll">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                    <h4>가루류 섞기 & 휴지</h4>
+                    <p>
+                        계란과 바닐라 익스트랙을 넣고 섞은 뒤, 체 친 가루류(박력분, 소다, 소금)를 넣고 주걱을 세워
+                        11자를 그리며 섞어줍니다. 날가루가 보이지 않으면 랩을 씌워 냉장고에서 <strong>30분간</strong> 휴지시킵니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step-card reveal-on-scroll">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                    <h4>두바이의 맛, 필링 만들기</h4>
+                    <p>
+                        피스타치오 크림, 타히니, 꿀을 섞어 꾸덕한 필링을 만듭니다.
+                        바삭한 식감을 원하시면 볶은 카다이프면이나 다진 피스타치오를 듬뿍 넣어주세요.
+                        필링은 잠시 냉동실에 넣어 굳히면 작업하기 편해요.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step-card reveal-on-scroll">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                    <h4>모양 잡고 굽기</h4>
+                    <p>
+                        반죽을 50g씩 떼어 펼친 뒤 필링을 넣고 동그랗게 감싸주세요.
+                        180°C로 예열된 오븐에서 12~15분간 굽습니다.
+                        오븐에서 갓 나온 쿠키는 매우 부드러우니, 트레이 채로 식혀주세요.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Aside -->
+        <aside class="tips-section container">
+            <div class="tips-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> 은희 & 정익의 시크릿 팁</h4>
+                <ul>
+                    <li><strong>쫀득함의 비밀:</strong> 오븐에서 꺼냈을 때 "좀 덜 익었나?" 싶을 때 꺼내야 식은 후 쫀득해집니다.</li>
+                    <li><strong>보관:</strong> 완전히 식은 후 밀폐용기에 담으면 3일간 맛있게 드실 수 있어요.</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Gallery/Comment Placeholder -->
+        <section class="gallery container">
+            <div class="section-title">
+                <h3>Sweet Moments</h3>
+                <p>완성된 쿠키를 자랑해주세요!</p>
+            </div>
+            <div class="comment-cta">
+                <button class="cta-btn">
+                    <i class="fa-solid fa-camera"></i> 사진 올리기
+                </button>
+                <p class="cta-text">여러분만의 두바이 쿠키 사진을 공유해주세요.</p>
             </div>
         </section>
     </main>
 
-    <footer class="app-footer">
-        <div class="container">
-            <p>&copy; 2026 QualiFind. Powered by HRD Korea API.</p>
-        </div>
+    <footer class="site-footer">
+        <p>Made with love by Eunhee & Jeongik <i class="fa-solid fa-heart" transform="grow-2"></i></p>
+        <p class="copyright">&copy; 2026 Dubai Cookie Recipe Project</p>
     </footer>
 
-    <!-- Modal for Details -->
-    <div id="detailModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
-            <div id="modalBody">
-                <!-- Content injected via JS -->
-                 <div class="modal-loading">
-                    <div class="loader"></div>
-                 </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
