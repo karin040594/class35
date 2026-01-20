@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Technical Qualification Info | 국가기술자격 정보</title>
+    <meta name="description" content="한국산업인력공단 국가기술자격 종목 정보를 쉽고 빠르게 검색하세요.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glob"></div>
+    <div class="background-glob glob-2"></div>
+
+    <header class="app-header">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-certificate"></i>
+                <span>Quali<span class="highlight">Find</span></span>
+            </div>
+            <nav>
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">당신의 <span class="gradient-text">미래</span>를 위한<br>최고의 자격증을 찾아보세요.</h1>
+                <p class="hero-subtitle">한국산업인력공단에서 제공하는 모든 국가기술자격 정보를 한눈에 확인하세요.</p>
+                
+                <div class="search-container">
+                    <div class="search-bar">
+                        <i class="fa-solid fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="자격증 명칭을 입력하세요 (예: 정보처리...)" autocomplete="off">
+                        <button id="searchBtn" class="search-button">검색</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="container">
+                <div id="loadingState" class="state-view hidden">
+                    <div class="loader"></div>
+                    <p>데이터를 불러오는 중입니다...</p>
+                </div>
+                <div id="errorState" class="state-view hidden">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p id="errorMessage">오류가 발생했습니다.</p>
+                </div>
+                <div id="emptyState" class="state-view hidden">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p>검색 결과가 없습니다.</p>
+                </div>
+
+                <div id="resultsGrid" class="cards-grid">
+                    <!-- Cards will be injected here via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2026 QualiFind. Powered by HRD Korea API.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Details -->
+    <div id="detailModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalBody">
+                <!-- Content injected via JS -->
+                 <div class="modal-loading">
+                    <div class="loader"></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
